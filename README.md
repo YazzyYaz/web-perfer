@@ -67,11 +67,12 @@ Copy paste the link and check out the scores!
 ### Steps Taken to Optimize
 
 The following steps were taken to achieve this high result:
-1. Inline style.css inside the HTML.
-2. Add async to javascript tags.
-3. Create gulpfile.js to minify CSS, Javascript, and Images.
-4. Compress CSS and Javascript with GZip compression.
-5. Move script tags to the bottom of the page.
+
+1.	Inline style.css inside the HTML.
+2.	Add async to javascript tags.
+3.	Create gulpfile.js to minify CSS, Javascript, and Images.
+4.	Compress CSS and Javascript with GZip compression.
+5.	Move script tags to the bottom of the page.
 
 
 ## Part 2
