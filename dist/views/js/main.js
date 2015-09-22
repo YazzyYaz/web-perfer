@@ -451,13 +451,14 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   
   // We get this value once
-  var pizzacontainer = document.querySelectorAll(".randomPizzaContainer");
-  // We get this value once
-  var newwidth = (pizzacontainer[0].offsetWidth + dx) + 'px';
+  var pizzacontainer = document.getElementsByClassName(".randomPizzaContainer");
+  
   function changePizzaSizes(size) {
 	// We take this value from the for loop
 	var dx = determineDx(pizzacontainer[0], size);
-	for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+	// We get this value once
+  	var newwidth = (pizzacontainer[0].offsetWidth + dx) + 'px';
+	for (var i = 0; i < pizzacontainer.length; i++) {
 	  pizzacontainer[i].style.width = newwidth;
 	}
   }
@@ -521,11 +522,17 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  for (var i = 0; i < items.length; i++) {
+  
 	// point scrollnum to phase
-	var phase = Math.sin(scrollnum + (i % 5));
-	items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-  }
+	var phase = [];
+	for (var i = 0; i < 5; i++) {
+		phase.push(Math.sin(scrollnum + i) * 100);
+	}
+
+	for (var i = 0, max = items.length; i < max; i++) {
+	    items[i].style.left = items[i].basicLeft + phase[i%5] + 'px';
+	}
+  
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -545,7 +552,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   // Change from 200 to 50 since 200 is a large number
-  for (var i = 0; i < 50; i++) {
+  numpizzas = Math.round(window.innerHeight / s) * cols;
+  for (var i = 0; i < numpizzas; i++) {
 	var elem = document.createElement('img');
 	elem.className = 'mover';
 	elem.src = "images/pizza.png";
