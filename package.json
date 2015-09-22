@@ -1,0 +1,24 @@
+{
+  "name": "web-perfer",
+  "version": "1.0.0",
+  "description": "By: Yaz Khoury",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-gzip": "^1.2.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-minify-html": "^1.0.4",
+    "gulp-minify-inline": "^0.1.1",
+    "gulp-uglify": "^1.4.1",
+    "gulp-uglifycss": "^1.0.4",
+    "imagemin-pngquant": "^4.2.0",
+    "npm": "^3.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
