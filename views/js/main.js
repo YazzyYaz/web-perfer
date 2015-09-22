@@ -449,9 +449,13 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  
+  // We get this value once
   var pizzacontainer = document.querySelectorAll(".randomPizzaContainer");
+  // We get this value once
   var newwidth = (pizzacontainer[0].offsetWidth + dx) + 'px';
   function changePizzaSizes(size) {
+    // We take this value from the for loop
     var dx = determineDx(pizzacontainer[0], size);
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
       pizzacontainer[i].style.width = newwidth;
@@ -470,6 +474,8 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+ 
+// We get this value once, not every time we loop
 var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -497,13 +503,18 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
+
+// Call this once
 var items;
+
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
+  
+  // We make this calculation once, not everytime we loop
   var scrollnum = document.body.scrollTop / 1250;
 
 
-  // Here's where we get this value only once.
+  // We use if statement to ensure we get the value once
   if (typeof items === 'undefined') {
     items = document.querySelectorAll('.mover');
   }
@@ -511,6 +522,7 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   for (var i = 0; i < items.length; i++) {
+    // point scrollnum to phase
     var phase = Math.sin(scrollnum + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
@@ -532,6 +544,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  // Change from 200 to 50 since 200 is a large number
   for (var i = 0; i < 50; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
