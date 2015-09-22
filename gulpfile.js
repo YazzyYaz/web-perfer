@@ -18,26 +18,12 @@ gulp.task('lint', function() {
         .pipe(jshint.reporter('default'));
 });
 
-// Lint JavaScript
-gulp.task('lint-piz', function() {
-    return gulp.src('src/views/js/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
-});
-
 // Minify HTML and inline scripts and CSS
 gulp.task('minifyhtml', function() {
   return gulp.src('src/*.html')
              .pipe(minifyHTML())
              .pipe(minifyInline())
              .pipe(gulp.dest('dist'));
-});
-// Minify HTML and inline scripts and CSS
-gulp.task('minifyhtml-pizza', function() {
-  return gulp.src('src/views/*.html')
-             .pipe(minifyHTML())
-             .pipe(minifyInline())
-             .pipe(gulp.dest('dist/views'));
 });
 
 // Minify CSS
@@ -47,13 +33,7 @@ gulp.task('minifycss', function() {
              .pipe(gzip())
              .pipe(gulp.dest('dist/css/'));
 });
-// Minify CSS
-gulp.task('minifycss-pizza', function() {
-  return gulp.src('src/views/css/*.css')
-             .pipe(uglifycss())
-             .pipe(gzip())
-             .pipe(gulp.dest('dist/views/css/'));
-});
+
 
 // Minify JavaScript
 gulp.task('minifyjs', function() {
@@ -63,13 +43,6 @@ gulp.task('minifyjs', function() {
              .pipe(gulp.dest('dist/js/'));
 });
 
-// Minify JavaScript
-gulp.task('minifyjs-pizza', function() {
-  return gulp.src('src/js/*.js')
-             .pipe(uglify())
-             .pipe(gzip())
-             .pipe(gulp.dest('dist/views/js/'));
-});
 
 
 // Move images with PNG or JPG extension
@@ -81,12 +54,6 @@ gulp.task('compress-images', function() {
         .pipe(gulp.dest('dist/img/'));
 });
 
-gulp.task('move-images', function() {
-  return gulp.src('src/views/images/*.*')
-        .pipe(gulp.dest('dist/views/img/'));
-});
 
 // Do everything by default
-gulp.task('default', ['lint', 'minifyhtml', 'minifycss', 'minifyjs', 'compress-images', 'lint-piz', 'minifyhtml-pizza', 'minifycss-pizza', 'minifyjs-pizza', 'move-images']);
-
-
+gulp.task('default', ['lint', 'minifyhtml', 'minifycss', 'minifyjs', 'compress-images']);
