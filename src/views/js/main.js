@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   // Change from 200 to number based on height of viewport
-  numpizzas = Math.round(window.innerHeight / s) * cols;
+  var numpizzas = Math.round(window.innerHeight / s) * cols;
   for (var i = 0; i < numpizzas; i++) {
 	var elem = document.createElement('img');
 	elem.className = 'mover';
