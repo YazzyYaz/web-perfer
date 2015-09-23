@@ -451,7 +451,7 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   
   // We get this value once
-  var pizzacontainer = document.getElementsByClassName(".randomPizzaContainer");
+  var pizzacontainer = document.getElementsByClassName("randomPizzaContainer");
   
   function changePizzaSizes(size) {
 	// We take this value from the for loop
@@ -551,7 +551,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  // Change from 200 to 50 since 200 is a large number
+  // Change from 200 to number based on height of viewport
   numpizzas = Math.round(window.innerHeight / s) * cols;
   for (var i = 0; i < numpizzas; i++) {
 	var elem = document.createElement('img');
