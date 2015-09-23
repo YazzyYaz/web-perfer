@@ -73,6 +73,7 @@ The following steps were taken to achieve this high result:
 3.	Create gulpfile.js to minify CSS, Javascript, and Images.
 4.	Compress CSS and Javascript with GZip compression.
 5.	Move script tags to the bottom of the page.
+6.	Add media query for print.css
 
 
 ## Part 2
@@ -89,13 +90,13 @@ A bigger screenshot of the achieved 60fps is shown here:
 
 ![dev-fps](assets/dev-fps.jpg)
 
-The file pizza.html is in the views folder, which is NOT part of the gulpfile.js build.
+The file pizza.html is in the views folder, which is also part of the gulpfile.js build.
 It is separated to make things simpler. Open pizza.html in your Chrome Browser, open DevTools, and then
 click on Timeline, record, and scroll down. You'll get the data afterwards.
 
 ### Steps Taken to Optimize
 
-1. On line 548 of main.js, changed pizza number from 200 to 50 since 200 is a lot.
+1. On line 548 of main.js, changed pizza number from 200 to viewport height since 200 is a lot.
 2. On function updatePositions in line 511, moved var scrollnum outside the loop, since the calculation 
 	needs to be made once. var items is called once outside the function. We add an if statement to 
 	ensure it's called once.
